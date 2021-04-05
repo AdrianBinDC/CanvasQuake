@@ -15,6 +15,9 @@
 		550A2BD4261AB35300962834 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 550A2BD2261AB35300962834 /* LaunchScreen.storyboard */; };
 		550A2BDF261AB35300962834 /* CombineQuakeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550A2BDE261AB35300962834 /* CombineQuakeTests.swift */; };
 		550A2BEA261AB35300962834 /* CombineQuakeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550A2BE9261AB35300962834 /* CombineQuakeUITests.swift */; };
+		550A2BFB261AB87900962834 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550A2BFA261AB87800962834 /* APIManager.swift */; };
+		550A2C01261ABC4F00962834 /* USGSSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550A2C00261ABC4F00962834 /* USGSSummary.swift */; };
+		550A2C0C261AC38000962834 /* APIManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550A2C0B261AC38000962834 /* APIManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		550A2BE5261AB35300962834 /* CombineQuakeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CombineQuakeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		550A2BE9261AB35300962834 /* CombineQuakeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineQuakeUITests.swift; sourceTree = "<group>"; };
 		550A2BEB261AB35300962834 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		550A2BFA261AB87800962834 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		550A2C00261ABC4F00962834 /* USGSSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USGSSummary.swift; sourceTree = "<group>"; };
+		550A2C0B261AC38000962834 /* APIManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,7 @@
 		550A2BC6261AB35000962834 /* CombineQuake */ = {
 			isa = PBXGroup;
 			children = (
+				550A2BFF261ABC3E00962834 /* Models */,
 				550A2BC7261AB35000962834 /* AppDelegate.swift */,
 				550A2BC9261AB35000962834 /* SceneDelegate.swift */,
 				550A2BCB261AB35000962834 /* ContentView.swift */,
@@ -122,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				550A2BDE261AB35300962834 /* CombineQuakeTests.swift */,
+				550A2C0B261AC38000962834 /* APIManagerTests.swift */,
 				550A2BE0261AB35300962834 /* Info.plist */,
 			);
 			path = CombineQuakeTests;
@@ -134,6 +142,15 @@
 				550A2BEB261AB35300962834 /* Info.plist */,
 			);
 			path = CombineQuakeUITests;
+			sourceTree = "<group>";
+		};
+		550A2BFF261ABC3E00962834 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				550A2BFA261AB87800962834 /* APIManager.swift */,
+				550A2C00261ABC4F00962834 /* USGSSummary.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,8 +283,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				550A2BFB261AB87900962834 /* APIManager.swift in Sources */,
 				550A2BC8261AB35000962834 /* AppDelegate.swift in Sources */,
 				550A2BCA261AB35000962834 /* SceneDelegate.swift in Sources */,
+				550A2C01261ABC4F00962834 /* USGSSummary.swift in Sources */,
 				550A2BCC261AB35000962834 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,6 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				550A2C0C261AC38000962834 /* APIManagerTests.swift in Sources */,
 				550A2BDF261AB35300962834 /* CombineQuakeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
