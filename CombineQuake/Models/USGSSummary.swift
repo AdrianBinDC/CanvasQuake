@@ -17,26 +17,26 @@ import Foundation
 
 // GeoJSON documentation
 // https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php
-struct USGSSummary {
+struct USGSSummary: Codable {
     let type: String
     let metadata: Metadata
     let features: [Feature]
     let bbox: [Double]
 }
 
-struct Feature {
-    let type: FeatureType
+struct Feature: Codable {
+    let type: String
     let properties: EarthQuakeData
     let geometry: Geometry
     let id: String
 }
 
-struct Geometry {
+struct Geometry: Codable {
     let type: String
     let coordinates: [Double]
 }
 
-struct EarthQuakeData {
+struct EarthQuakeData: Codable {
     let mag: Double
     let place: String
     let time: Int
@@ -61,20 +61,11 @@ struct EarthQuakeData {
     let rms: Double
     let gap: Double?
     let magType: String
-    let type: PropertiesType
+    let type: String
     let title: String
 }
 
-enum PropertiesType {
-    case earthquake
-    case explosion
-}
-
-enum FeatureType {
-    case feature
-}
-
-struct Metadata {
+struct Metadata: Codable {
     let generated: Int
     let url: String
     let title: String
