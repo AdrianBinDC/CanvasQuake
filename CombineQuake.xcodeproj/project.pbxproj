@@ -20,6 +20,7 @@
 		559E8F25261C870300C2D907 /* FlagKit in Frameworks */ = {isa = PBXBuildFile; productRef = 559E8F24261C870300C2D907 /* FlagKit */; };
 		559E8F2C261D281D00C2D907 /* MockStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559E8F2B261D281D00C2D907 /* MockStructs.swift */; };
 		559E8F3D261D2B6300C2D907 /* EarthquakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559E8F3C261D2B6300C2D907 /* EarthquakeView.swift */; };
+		55BE1FBB261F4D3200A3A858 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BE1FBA261F4D3200A3A858 /* Icons.swift */; };
 		55C0FACB261B490900F03F21 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0FACA261B490900F03F21 /* LocationManager.swift */; };
 		55C0FADF261B4CB300F03F21 /* LocationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0FADE261B4CB300F03F21 /* LocationManagerTests.swift */; };
 /* End PBXBuildFile section */
@@ -60,6 +61,7 @@
 		550A2C0B261AC38000962834 /* APIManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManagerTests.swift; sourceTree = "<group>"; };
 		559E8F2B261D281D00C2D907 /* MockStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStructs.swift; sourceTree = "<group>"; };
 		559E8F3C261D2B6300C2D907 /* EarthquakeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeView.swift; sourceTree = "<group>"; };
+		55BE1FBA261F4D3200A3A858 /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
 		55C0FACA261B490900F03F21 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		55C0FADE261B4CB300F03F21 /* LocationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -313,6 +315,7 @@
 				550A2BC8261AB35000962834 /* AppDelegate.swift in Sources */,
 				55C0FACB261B490900F03F21 /* LocationManager.swift in Sources */,
 				550A2BCA261AB35000962834 /* SceneDelegate.swift in Sources */,
+				55BE1FBB261F4D3200A3A858 /* Icons.swift in Sources */,
 				559E8F3D261D2B6300C2D907 /* EarthquakeView.swift in Sources */,
 				550A2C01261ABC4F00962834 /* USGSSummary.swift in Sources */,
 				550A2BCC261AB35000962834 /* ContentView.swift in Sources */,
