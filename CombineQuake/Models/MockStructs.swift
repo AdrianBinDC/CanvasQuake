@@ -42,7 +42,7 @@ enum MockStructs {
                                           title: "M 6.5 - 32km W of Sola, Vanuatu")
     static let geometry = Geometry(type: "Point",
                                    coordinates: [167.249, -13.8633, 187.0])
-    
+
     static let earthquake = Feature(type: "Feature",
                                     properties: quakeData,
                                     geometry: geometry,

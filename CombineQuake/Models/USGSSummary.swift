@@ -77,8 +77,8 @@ struct Metadata: Codable {
 
 extension Feature {
     var region: MKCoordinateRegion {
-        let center = CLLocationCoordinate2D(latitude: geometry.coordinates[0],
-                                            longitude: geometry.coordinates[1])
+        let center = CLLocationCoordinate2D(latitude: geometry.coordinates[1],
+                                            longitude: geometry.coordinates[0])
         let span = MKCoordinateSpan(latitudeDelta: 1.0, longitudeDelta: 1.0)
         let region = MKCoordinateRegion(center: center,
                                         span: span)
