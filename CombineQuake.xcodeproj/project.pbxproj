@@ -21,6 +21,8 @@
 		559E8F2C261D281D00C2D907 /* MockStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559E8F2B261D281D00C2D907 /* MockStructs.swift */; };
 		559E8F3D261D2B6300C2D907 /* EarthquakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559E8F3C261D2B6300C2D907 /* EarthquakeView.swift */; };
 		55BE1FBB261F4D3200A3A858 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BE1FBA261F4D3200A3A858 /* Icons.swift */; };
+		55BE1FC1261F502B00A3A858 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BE1FC0261F502B00A3A858 /* Date+Extension.swift */; };
+		55BE1FC9261F509A00A3A858 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BE1FC8261F509A00A3A858 /* View+Extension.swift */; };
 		55C0FACB261B490900F03F21 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0FACA261B490900F03F21 /* LocationManager.swift */; };
 		55C0FADF261B4CB300F03F21 /* LocationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0FADE261B4CB300F03F21 /* LocationManagerTests.swift */; };
 /* End PBXBuildFile section */
@@ -62,6 +64,8 @@
 		559E8F2B261D281D00C2D907 /* MockStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStructs.swift; sourceTree = "<group>"; };
 		559E8F3C261D2B6300C2D907 /* EarthquakeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeView.swift; sourceTree = "<group>"; };
 		55BE1FBA261F4D3200A3A858 /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
+		55BE1FC0261F502B00A3A858 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		55BE1FC8261F509A00A3A858 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		55C0FACA261B490900F03F21 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		55C0FADE261B4CB300F03F21 /* LocationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,6 +121,7 @@
 			children = (
 				550A2BFA261AB87800962834 /* APIManager.swift */,
 				55C0FACA261B490900F03F21 /* LocationManager.swift */,
+				55BE1FBF261F501500A3A858 /* Extensions */,
 				550A2BFF261ABC3E00962834 /* Models */,
 				559E8F30261D2B1B00C2D907 /* Views */,
 				550A2BC7261AB35000962834 /* AppDelegate.swift */,
@@ -170,8 +175,18 @@
 			isa = PBXGroup;
 			children = (
 				559E8F3C261D2B6300C2D907 /* EarthquakeView.swift */,
+				55BE1FBA261F4D3200A3A858 /* Icons.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		55BE1FBF261F501500A3A858 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				55BE1FC0261F502B00A3A858 /* Date+Extension.swift */,
+				55BE1FC8261F509A00A3A858 /* View+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,11 +326,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				550A2BFB261AB87900962834 /* APIManager.swift in Sources */,
+				55BE1FC1261F502B00A3A858 /* Date+Extension.swift in Sources */,
 				559E8F2C261D281D00C2D907 /* MockStructs.swift in Sources */,
 				550A2BC8261AB35000962834 /* AppDelegate.swift in Sources */,
 				55C0FACB261B490900F03F21 /* LocationManager.swift in Sources */,
 				550A2BCA261AB35000962834 /* SceneDelegate.swift in Sources */,
 				55BE1FBB261F4D3200A3A858 /* Icons.swift in Sources */,
+				55BE1FC9261F509A00A3A858 /* View+Extension.swift in Sources */,
 				559E8F3D261D2B6300C2D907 /* EarthquakeView.swift in Sources */,
 				550A2C01261ABC4F00962834 /* USGSSummary.swift in Sources */,
 				550A2BCC261AB35000962834 /* ContentView.swift in Sources */,
