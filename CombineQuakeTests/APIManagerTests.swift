@@ -79,6 +79,7 @@ class APIManagerTests: XCTestCase {
                 XCTAssertTrue(true)
                 let earthquakes = result.features
                 XCTAssertEqual(earthquakes.count, 2)
+                print(earthquakes[0])
                 exp.fulfill()
             case .failure(_):
                 XCTFail("fetch(url:completion) failed")

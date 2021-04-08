@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MapKit
 
 // Documentation:
 // https://earthquake.usgs.gov/fdsnws/event/1/
@@ -24,7 +25,7 @@ struct USGSSummary: Codable {
     let bbox: [Double]
 }
 
-struct Feature: Codable {
+struct Feature: Codable, Identifiable {
     let type: String
     let properties: EarthQuakeData
     let geometry: Geometry
@@ -72,4 +73,16 @@ struct Metadata: Codable {
     let status: Int
     let api: String
     let count: Int
+}
+
+extension Feature {
+    var region: MKCoordinateRegion {
+        let center = CLLocationCoordinate2D(latitude: geometry.coordinates[0],
+                                            longitude: geometry.coordinates[1])
+        let span = MKCoordinateSpan(latitudeDelta: 1.0, longitudeDelta: 1.0)
+        let region = MKCoordinateRegion(center: center,
+                                        span: span)
+        
+        return region
+    }
 }

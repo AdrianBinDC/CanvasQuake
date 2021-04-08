@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "FlagKit",
+        "repositoryURL": "https://github.com/madebybowtie/FlagKit.git",
+        "state": {
+          "branch": null,
+          "revision": "7b2e6f85f7b752568d079f99b45d26aecb0f72d9",
+          "version": "2.3.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
