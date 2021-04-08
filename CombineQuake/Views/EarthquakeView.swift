@@ -9,10 +9,16 @@ import Combine
 import MapKit
 import SwiftUI
 
+// FIXME: Figure out how to add
+// FIXME: Move this to a file that makes sense
+struct AnnotationItem: Identifiable {
+    let id = UUID()
+    let coordinate: CLLocationCoordinate2D
+}
+    
 class EarthquakeViewModel: ObservableObject {
     @Published private(set) var quakeData: Feature
     @State var region: MKCoordinateRegion
-    
     
     init(quakeData: Feature) {
         self.quakeData = quakeData
@@ -27,13 +33,14 @@ class EarthquakeViewModel: ObservableObject {
 struct EarthquakeView: View {
     @ObservedObject var viewModel: EarthquakeViewModel
     @State var region: MKCoordinateRegion
-    
+        
     init(viewModel: EarthquakeViewModel) {
         self.viewModel = viewModel
         _region = State(initialValue: viewModel.region)
     }
     
     var body: some View {
+        // TODO: Finish writing view
         VStack {
             Text(viewModel.title)
             Map(coordinateRegion: $region)

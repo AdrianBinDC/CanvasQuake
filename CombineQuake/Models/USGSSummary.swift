@@ -5,6 +5,7 @@
 //  Created by Adrian Bolinger on 4/4/21.
 //
 
+import SwiftUI
 import Foundation
 import MapKit
 
@@ -76,11 +77,15 @@ struct Metadata: Codable {
 }
 
 extension Feature {
+    var coordinate: CLLocationCoordinate2D {
+        CLLocationCoordinate2D(latitude: geometry.coordinates[1],
+                               longitude: geometry.coordinates[0])
+    }
+    
     var region: MKCoordinateRegion {
-        let center = CLLocationCoordinate2D(latitude: geometry.coordinates[1],
-                                            longitude: geometry.coordinates[0])
-        let span = MKCoordinateSpan(latitudeDelta: 1.0, longitudeDelta: 1.0)
-        let region = MKCoordinateRegion(center: center,
+        let span = MKCoordinateSpan(latitudeDelta: 1.0,
+                                    longitudeDelta: 1.0)
+        let region = MKCoordinateRegion(center: coordinate,
                                         span: span)
         
         return region
