@@ -35,4 +35,42 @@ class DateExtensionTests: XCTestCase {
                                       day: 5)
         XCTAssertEqual(sutDate, try XCTUnwrap(mockDate))
     }
+    
+    func testDateIntervalEnum() {
+        let expectedCases: [CQDateInterval] = [
+            .oneDay,
+            .sevenDays,
+            .thirtyDays,
+            .threeMonths,
+            .sixMonths,
+            .twelveMonths
+        ]
+        
+        let actualCases = CQDateInterval.allCases
+        
+        XCTAssertEqual(expectedCases, actualCases)
+        
+        let expectedValues = [1, 7, 30, 90, 180, 365]
+        
+        XCTAssertEqual(actualCases.map { $0.rawValue }, expectedValues)
+    }
+    
+    func testCreateRelativeDate() throws {
+        let referenceDate = try XCTUnwrap(Date.customDate(year: 2021,
+                                                          month: 4,
+                                                          day: 9))
+        let expectedFutureDate = try XCTUnwrap(Date.customDate(year: 2022,
+                                                               month: 4,
+                                                               day: 9))
+        let expectedPastDate = try XCTUnwrap(Date.customDate(year: 2020,
+                                                             month: 4,
+                                                             day: 9))
+        
+        XCTAssertEqual(expectedFutureDate, Date.date(.inFuture,
+                                                     interval: .twelveMonths,
+                                                     referenceDate: referenceDate))
+        XCTAssertEqual(expectedPastDate, Date.date(.inPast,
+                                                   interval: .twelveMonths,
+                                                   referenceDate: referenceDate))
+    }
 }

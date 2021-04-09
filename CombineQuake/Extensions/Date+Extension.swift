@@ -7,6 +7,15 @@
 
 import Foundation
 
+public enum CQDateInterval: Int, CaseIterable {
+    case oneDay = 1
+    case sevenDays = 7
+    case thirtyDays = 30
+    case threeMonths = 90
+    case sixMonths = 180
+    case twelveMonths = 365
+}
+
 extension Date {
     func string(style: DateFormatter.Style) -> String {
         let dateFormatter = DateFormatter()
@@ -29,5 +38,38 @@ extension Date {
         components.day = day
         
         return Calendar.current.date(from: components)
+    }
+    
+    enum CQRelativeTime {
+        case inFuture
+        case inPast
+    }
+    
+    
+    /// Generate a Date for a specified interval
+    /// - Parameters:
+    ///   - relativeTime: A `CQRelativeTime` value (past or future)
+    ///   - interval: A `CQDateInterval` (day, month, etc.)
+    ///   - referenceDate: The starting `Date` for the reference
+    /// - Returns: An optional `Date` value
+    static func date(_ relativeTime: CQRelativeTime,
+                     interval: CQDateInterval,
+                     referenceDate: Date = Date()) -> Date? {
+        var inPast: Bool
+        
+        switch relativeTime {
+        case .inFuture:
+            inPast = false
+        case .inPast:
+            inPast = true
+        }
+        
+        let interval = inPast ? (interval.rawValue * -1) : interval.rawValue
+        
+        let date = Calendar.current.date(byAdding: .day,
+                                         value: interval,
+                                         to: referenceDate)
+    
+        return date
     }
 }
