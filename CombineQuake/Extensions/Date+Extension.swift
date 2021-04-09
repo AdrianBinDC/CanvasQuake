@@ -37,7 +37,13 @@ extension Date {
         components.month = month
         components.day = day
         
-        return Calendar.current.date(from: components)
+        let date =  Calendar.current.date(from: components)
+        
+        guard let unwrappedDate = date else {
+            return nil
+        }
+        
+        return Calendar.current.startOfDay(for: unwrappedDate)
     }
     
     enum CQRelativeTime {
@@ -69,7 +75,11 @@ extension Date {
         let date = Calendar.current.date(byAdding: .day,
                                          value: interval,
                                          to: referenceDate)
+        
+        guard let unwrappedDate = date else {
+            return nil
+        }
     
-        return date
+        return Calendar.current.startOfDay(for: unwrappedDate)
     }
 }
