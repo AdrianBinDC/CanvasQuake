@@ -10,7 +10,7 @@ import XCTest
 
 class DateExtensionTests: XCTestCase {
     
-    lazy var mockDate: Date? = {
+    private lazy var mockDate: Date? = {
         var components = DateComponents()
         components.month = 11
         components.day = 5
@@ -27,5 +27,12 @@ class DateExtensionTests: XCTestCase {
         XCTAssertEqual(date.string(style: .medium), "Nov 5, 1968")
         XCTAssertEqual(date.string(style: .none), "")
         XCTAssertEqual(date.string(style: .short), "11/5/68")
+    }
+    
+    func testCustomDate() throws {
+        let sutDate = Date.customDate(year: 1968,
+                                      month: 11,
+                                      day: 5)
+        XCTAssertEqual(sutDate, try XCTUnwrap(mockDate))
     }
 }
