@@ -37,16 +37,16 @@ class DateExtensionTests: XCTestCase {
     }
     
     func testDateIntervalEnum() {
-        let expectedCases: [CQDateInterval] = [
+        let expectedCases: [DateSpan] = [
             .oneDay,
-            .sevenDays,
-            .thirtyDays,
+            .oneWeek,
+            .oneMonth,
             .threeMonths,
             .sixMonths,
-            .twelveMonths
+            .oneYear
         ]
         
-        let actualCases = CQDateInterval.allCases
+        let actualCases = DateSpan.allCases
         
         XCTAssertEqual(expectedCases, actualCases)
         
@@ -67,10 +67,10 @@ class DateExtensionTests: XCTestCase {
                                                              day: 9))
         
         XCTAssertEqual(expectedFutureDate, Date.date(.inFuture,
-                                                     interval: .twelveMonths,
+                                                     interval: .oneYear,
                                                      referenceDate: referenceDate))
         XCTAssertEqual(expectedPastDate, Date.date(.inPast,
-                                                   interval: .twelveMonths,
+                                                   interval: .oneYear,
                                                    referenceDate: referenceDate))
     }
 }

@@ -19,6 +19,7 @@ class LocationManagerTests: XCTestCase {
         LocationManager.sharedInstance
     }()
     
+    // FIXME: Figure out how to delay this test
     func testLatestLocationPublisher() {
         let exp = expectation(description: "testLatestLocationPublisher")
         
@@ -35,7 +36,6 @@ class LocationManagerTests: XCTestCase {
     
     func testGeocode() {
         let exp = expectation(description: "testGeocode")
-
 
         locationManager.geocode(locationString: "1600 Pennsylvania Avenue, Washington, DC") { placemark in
             XCTAssertNotNil(placemark)

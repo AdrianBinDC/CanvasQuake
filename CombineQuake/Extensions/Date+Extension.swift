@@ -7,13 +7,13 @@
 
 import Foundation
 
-public enum CQDateInterval: Int, CaseIterable {
+public enum DateSpan: Int, CaseIterable {
     case oneDay = 1
-    case sevenDays = 7
-    case thirtyDays = 30
+    case oneWeek = 7
+    case oneMonth = 30
     case threeMonths = 90
     case sixMonths = 180
-    case twelveMonths = 365
+    case oneYear = 365
 }
 
 extension Date {
@@ -55,11 +55,11 @@ extension Date {
     /// Generate a Date for a specified interval
     /// - Parameters:
     ///   - relativeTime: A `CQRelativeTime` value (past or future)
-    ///   - interval: A `CQDateInterval` (day, month, etc.)
+    ///   - interval: A `DateSpan` (day, month, etc.)
     ///   - referenceDate: The starting `Date` for the reference
     /// - Returns: An optional `Date` value
     static func date(_ relativeTime: CQRelativeTime,
-                     interval: CQDateInterval,
+                     interval: DateSpan,
                      referenceDate: Date = Date()) -> Date? {
         var inPast: Bool
         
@@ -81,5 +81,9 @@ extension Date {
         }
     
         return Calendar.current.startOfDay(for: unwrappedDate)
+    }
+    
+    var startOfDay: Date {
+        Calendar.current.startOfDay(for: self)
     }
 }
