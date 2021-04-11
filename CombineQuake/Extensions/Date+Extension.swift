@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum DateSpan: Int, CaseIterable {
+public enum DateSpan: Int, CaseIterable, Hashable {
     case oneDay = 1
     case oneWeek = 7
     case oneMonth = 30
@@ -18,17 +18,17 @@ public enum DateSpan: Int, CaseIterable {
     var description: String {
         switch self {
         case .oneDay:
-            return "1D"
+            return "1d"
         case .oneWeek:
-            return "1W"
+            return "1w"
         case .oneMonth:
-            return "1M"
+            return "1m"
         case .threeMonths:
-            return "3M"
+            return "3m"
         case .sixMonths:
-            return "6M"
+            return "6m"
         case .oneYear:
-            return "1Y"
+            return "1y"
         }
     }
 }
