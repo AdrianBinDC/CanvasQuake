@@ -6,7 +6,6 @@
 //
 
 import Combine
-import EntwineTest
 import XCTest
 @testable import CombineQuake
 
@@ -43,49 +42,25 @@ class ContentViewModelTests: XCTestCase {
             createDate(month: 10, day: 8, year: 1972),
             createDate(month: 9, day: 19, year: 2006)
         ]
-        
-        // Expected Strings
-        let expectedEndDateStrings = [
-            "Oct 8, 1972",
-            "Sep 19, 2006"
-        ]
-        
-        let expectedStrings = [
-            "Oct 1, 1972",
-            "Sep 12, 2006"
-        ]
-        
+                
         viewModel.$startDate
             .collectNext(2)
             .sink { actualStartDates in
                 XCTAssertEqual(actualStartDates, expectedStartDates)
             }
             .store(in: &subscriptions)
-        
-        viewModel.$startDateString
-            .collectNext(2)
-            .sink { actualStrings in
-                XCTAssertEqual(actualStrings, expectedStrings)
-            }
-            .store(in: &subscriptions)
-        
+                
         viewModel.$endDate
             .collectNext(2)
             .sink { actualEndDates in
                 XCTAssertEqual(actualEndDates, expectedEndDates)
             }
             .store(in: &subscriptions)
-        
-        viewModel.$endDateString
-            .collectNext(2)
-            .sink { actualStrings in
-                XCTAssertEqual(expectedEndDateStrings, actualStrings)
-            }
-            .store(in: &subscriptions)
-        
+                
         expectedStartDates.forEach { date in
             viewModel.startDate = date
         }
-        
     }
+    
+    // TODO: Write tests for endDate
 }
