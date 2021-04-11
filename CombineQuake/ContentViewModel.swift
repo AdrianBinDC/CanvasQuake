@@ -35,6 +35,11 @@ class ContentViewModel: ObservableObject {
     @Published var endDate = Date().startOfDay {
         didSet {
             print(">>> endDate", endDate.string(style: .short))
+            guard endDate <= Date() else {
+                endDate = oldValue
+                return
+            }
+
         }
     }
                 
