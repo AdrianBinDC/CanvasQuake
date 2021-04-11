@@ -13,38 +13,52 @@ class ContentViewModel: ObservableObject {
     private let locationManager = LocationManager.sharedInstance
     
     @Published var dateSpan: DateSpan = .oneWeek
-
-    @Published var startDate = Date.date(.inPast, interval: .oneWeek)
-    @Published var startDateString = ""
+    @Published private(set) var dateSpanString: String = ""
     
+    @Published var startDate = Date.date(.inPast,
+                                         interval: .oneWeek)
     @Published var endDate = Date().startOfDay
-    @Published var endDateString = ""
+    
+    @Published var showCalendar: Bool = false
     
     private var subscribers: Set<AnyCancellable> = []
-        
+    
     init() {
         // set up publishers
         setupStartDatePublishers()
         setupEndDatePublishers()
+        setupDateSpanPublishers()
     }
     
     private func setupStartDatePublishers() {
         $startDate.sink { date in
-            if let newStartDate = date,
-               let newEndDate = Date.date(.inFuture,
-                                          interval: self.dateSpan,
-                                          referenceDate: newStartDate) {
-                self.startDateString = newStartDate.string(style: .medium)
-                self.endDate = newEndDate
-            }
+            self.updateDateSpanString()
         }
         .store(in: &subscribers)
     }
     
     private func setupEndDatePublishers() {
+        // TODO: update unit tests
         $endDate.sink { date in
-            self.endDateString = date.string(style: .medium)
+            self.startDate = Date.date(.inPast,
+                                     interval: self.dateSpan,
+                                     referenceDate: date)
+            self.updateDateSpanString()
         }
         .store(in: &subscribers)
+    }
+    
+    private func setupDateSpanPublishers() {
+        $dateSpan.sink { dateSpan in
+            self.startDate = Date.date(.inPast,
+                                       interval: dateSpan,
+                                       referenceDate: self.endDate)
+        }
+        .store(in: &subscribers)
+        
+    }
+    
+    func updateDateSpanString() {
+        dateSpanString = "\(self.startDate.string(style: .medium)) to \(self.endDate.string(style: .medium))"
     }
 }
