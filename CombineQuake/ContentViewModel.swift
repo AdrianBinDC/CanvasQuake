@@ -12,15 +12,35 @@ class ContentViewModel: ObservableObject {
     private let apiManager = APIManager()
     private let locationManager = LocationManager.sharedInstance
     
-    @Published var dateSpan: DateSpan = .oneWeek
-    @Published private(set) var dateSpanString: String = ""
+    @Published var dateSpan: DateSpan = .oneWeek {
+        didSet {
+            print(">>> dateSpan:", dateSpan.description)
+        }
+    }
+    @Published private(set) var dateSpanString: String = "" {
+        didSet {
+            print(">>> dateSpanString", dateSpanString)
+        }
+    }
     
     @Published var startDate = Date.date(.inPast,
-                                         interval: .oneWeek)
-    @Published var endDate = Date().startOfDay
-    
-    @Published var showCalendar: Bool = false
-    
+                                         interval: .oneWeek) {
+        didSet {
+            print(">>> startDate:", startDate.string(style: .short))
+        }
+    }
+    @Published var endDate = Date().startOfDay {
+        didSet {
+            print(">>> endDate", endDate.string(style: .short))
+        }
+    }
+        
+    lazy var dateChangePublisher: Publishers.Merge<Published<Date>.Publisher, Published<Date>.Publisher> = {
+        let publisher = Publishers.Merge<Published<Date>.Publisher, Published<Date>.Publisher>($startDate, $endDate)
+        
+        return publisher
+    }()
+        
     private var subscribers: Set<AnyCancellable> = []
     
     init() {
@@ -28,11 +48,11 @@ class ContentViewModel: ObservableObject {
         setupStartDatePublishers()
         setupEndDatePublishers()
         setupDateSpanPublishers()
+        setupDateChangePublisher()
     }
     
     private func setupStartDatePublishers() {
         $startDate.sink { date in
-            self.updateDateSpanString()
         }
         .store(in: &subscribers)
     }
@@ -43,7 +63,6 @@ class ContentViewModel: ObservableObject {
             self.startDate = Date.date(.inPast,
                                      interval: self.dateSpan,
                                      referenceDate: date)
-            self.updateDateSpanString()
         }
         .store(in: &subscribers)
     }
@@ -56,6 +75,13 @@ class ContentViewModel: ObservableObject {
         }
         .store(in: &subscribers)
         
+    }
+    
+    private func setupDateChangePublisher() {
+        dateChangePublisher.sink(receiveValue: { date in
+            self.updateDateSpanString()
+        })
+        .store(in: &subscribers)
     }
     
     func updateDateSpanString() {
