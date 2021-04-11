@@ -51,8 +51,12 @@ class DateExtensionTests: XCTestCase {
         XCTAssertEqual(expectedCases, actualCases)
         
         let expectedValues = [1, 7, 30, 90, 180, 365]
-        
         XCTAssertEqual(actualCases.map { $0.rawValue }, expectedValues)
+        
+        let expectedCaseDescriptions: [String] = ["1D", "1W", "1M", "3M", "6M", "1Y"]
+        let actualCaseDescriptions = actualCases.map { $0.description }
+        XCTAssertEqual(expectedCaseDescriptions, actualCaseDescriptions)
+        
     }
     
     func testCreateRelativeDate() throws {

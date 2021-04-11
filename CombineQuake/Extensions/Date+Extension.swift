@@ -14,6 +14,23 @@ public enum DateSpan: Int, CaseIterable {
     case threeMonths = 90
     case sixMonths = 180
     case oneYear = 365
+    
+    var description: String {
+        switch self {
+        case .oneDay:
+            return "1D"
+        case .oneWeek:
+            return "1W"
+        case .oneMonth:
+            return "1M"
+        case .threeMonths:
+            return "3M"
+        case .sixMonths:
+            return "6M"
+        case .oneYear:
+            return "1Y"
+        }
+    }
 }
 
 extension Date {
@@ -60,7 +77,7 @@ extension Date {
     /// - Returns: An optional `Date` value
     static func date(_ relativeTime: CQRelativeTime,
                      interval: DateSpan,
-                     referenceDate: Date = Date()) -> Date? {
+                     referenceDate: Date = Date()) -> Date {
         var inPast: Bool
         
         switch relativeTime {
@@ -76,11 +93,11 @@ extension Date {
                                          value: interval,
                                          to: referenceDate)
         
-        guard let unwrappedDate = date else {
-            return nil
-        }
+//        guard let unwrappedDate = date else {
+//            return nil
+//        }
     
-        return Calendar.current.startOfDay(for: unwrappedDate)
+        return Calendar.current.startOfDay(for: date!)
     }
     
     var startOfDay: Date {
