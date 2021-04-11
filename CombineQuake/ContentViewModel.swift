@@ -37,13 +37,11 @@ class ContentViewModel: ObservableObject {
             print(">>> endDate", endDate.string(style: .short))
         }
     }
-        
-    lazy var dateChangePublisher: Publishers.Merge<DatePublisher, DatePublisher> = {
-        let publisher = Publishers.Merge<DatePublisher, DatePublisher>($startDate, $endDate)
-        
-        return publisher
+                
+    private lazy var latestDatesPublisher: Publishers.CombineLatest = {
+        Publishers.CombineLatest($startDate, $endDate)
     }()
-        
+    
     private var subscribers: Set<AnyCancellable> = []
     
     init() {
@@ -51,11 +49,12 @@ class ContentViewModel: ObservableObject {
         setupStartDatePublishers()
         setupEndDatePublishers()
         setupDateSpanPublishers()
-        setupDateChangePublisher()
+        setupLatestDatesPublisher()
     }
     
     private func setupStartDatePublishers() {
         $startDate.sink { date in
+            // FIXME: do I need this?
         }
         .store(in: &subscribers)
     }
@@ -80,14 +79,10 @@ class ContentViewModel: ObservableObject {
         
     }
     
-    private func setupDateChangePublisher() {
-        dateChangePublisher.sink(receiveValue: { date in
-            self.updateDateSpanString()
-        })
+    private func setupLatestDatesPublisher() {
+        latestDatesPublisher.sink { start, end in
+            self.dateSpanString = "\(start.string(style: .medium)) to \(end.string(style: .medium))"
+        }
         .store(in: &subscribers)
-    }
-    
-    func updateDateSpanString() {
-        dateSpanString = "\(self.startDate.string(style: .medium)) to \(self.endDate.string(style: .medium))"
     }
 }
