@@ -58,7 +58,6 @@ class ContentViewModel: ObservableObject {
                                        referenceDate: self.endDate)
         }
         .store(in: &subscribers)
-        
     }
     
     private func setupLatestDatesPublisher() {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum DateSpan: Int, CaseIterable, Hashable {
+public enum DateSpan: Int, CaseIterable {
     case oneDay = 1
     case oneWeek = 7
     case oneMonth = 30
