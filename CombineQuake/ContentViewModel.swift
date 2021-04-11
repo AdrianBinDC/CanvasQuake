@@ -9,6 +9,9 @@ import Combine
 import Foundation
 
 class ContentViewModel: ObservableObject {
+    typealias DatePublisher = Published<Date>.Publisher
+    typealias DateSpanPublisher = Published<DateSpan>.Publisher
+    
     private let apiManager = APIManager()
     private let locationManager = LocationManager.sharedInstance
     
@@ -35,8 +38,8 @@ class ContentViewModel: ObservableObject {
         }
     }
         
-    lazy var dateChangePublisher: Publishers.Merge<Published<Date>.Publisher, Published<Date>.Publisher> = {
-        let publisher = Publishers.Merge<Published<Date>.Publisher, Published<Date>.Publisher>($startDate, $endDate)
+    lazy var dateChangePublisher: Publishers.Merge<DatePublisher, DatePublisher> = {
+        let publisher = Publishers.Merge<DatePublisher, DatePublisher>($startDate, $endDate)
         
         return publisher
     }()
