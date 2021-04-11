@@ -15,31 +15,16 @@ class ContentViewModel: ObservableObject {
     private let apiManager = APIManager()
     private let locationManager = LocationManager.sharedInstance
     
-    @Published var dateSpan: DateSpan = .oneWeek {
-        didSet {
-            print(">>> dateSpan:", dateSpan.description)
-        }
-    }
-    @Published private(set) var dateSpanString: String = "" {
-        didSet {
-            print(">>> dateSpanString", dateSpanString)
-        }
-    }
-    
+    @Published var dateSpan: DateSpan = .oneWeek
+    @Published private(set) var dateSpanString: String = ""
     @Published var startDate = Date.date(.inPast,
-                                         interval: .oneWeek) {
-        didSet {
-            print(">>> startDate:", startDate.string(style: .short))
-        }
-    }
+                                         interval: .oneWeek)
     @Published var endDate = Date().startOfDay {
         didSet {
-            print(">>> endDate", endDate.string(style: .short))
             guard endDate <= Date() else {
                 endDate = oldValue
                 return
             }
-
         }
     }
                 
@@ -51,17 +36,9 @@ class ContentViewModel: ObservableObject {
     
     init() {
         // set up publishers
-        setupStartDatePublishers()
         setupEndDatePublishers()
         setupDateSpanPublishers()
         setupLatestDatesPublisher()
-    }
-    
-    private func setupStartDatePublishers() {
-        $startDate.sink { date in
-            // FIXME: do I need this?
-        }
-        .store(in: &subscribers)
     }
     
     private func setupEndDatePublishers() {
