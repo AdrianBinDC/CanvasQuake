@@ -106,6 +106,29 @@ class APIManagerTests: XCTestCase {
         
         waitForExpectations(timeout: 10, handler: nil)
     }
+    
+    // TODO: do a more complex query with a bigger response to get a better feel for time spent decoding, etc.
+    func testMeasureFetchPerformance() {
+        measure {
+            let apiManager = APIManager()
+            let startDate = try? XCTUnwrap(mockDate(month: 1, day: 1, year: 2014))
+            let endDate = try? XCTUnwrap(mockDate(month: 1, day: 2, year: 2014))
+            let url = try? XCTUnwrap(apiManager.generateURL(startDate: startDate,
+                                                           endDate: endDate,
+                                                           minMag: 5.0,
+                                                           maxMag: nil))
+            apiManager.fetch(url: url!) { (result: Result<USGSSummary, Error>) in
+                switch result {
+                case .success(let result):
+                    XCTAssertTrue(true)
+                    let earthquakes = result.features
+                    XCTAssertEqual(earthquakes.count, 2)
+                case .failure(_):
+                    XCTFail("fetch(url:completion) failed")
+                }
+            }
+        }
+    }
 }
 
 extension XCTestCase {
