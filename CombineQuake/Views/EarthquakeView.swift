@@ -27,7 +27,7 @@ class EarthquakeViewModel: ObservableObject {
     
     public lazy var title: String = {
         quakeData.properties.title
-    }()
+    }() ?? ""
 }
 
 struct EarthquakeView: View {
