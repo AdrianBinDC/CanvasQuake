@@ -33,33 +33,56 @@ class ContentViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.endDate, today)
         
         // Expected Dates
-        let expectedStartDates = [
-            createDate(month: 10, day: 1, year: 1972),
-            createDate(month: 9, day: 12, year: 2006)
-        ]
-        
         let expectedEndDates = [
             createDate(month: 10, day: 8, year: 1972),
-            createDate(month: 9, day: 19, year: 2006)
+            createDate(month: 9, day: 19, year: 2006),
+            createDate(month: 8, day: 10, year: 1971),
+        ]
+
+        let expectedStartDates = [
+            createDate(month: 10, day: 1, year: 1972),
+            createDate(month: 9, day: 12, year: 2006),
+            createDate(month: 8, day: 3, year: 1971),
+            createDate(month: 8, day: 9, year: 1971),
         ]
                 
+//        let expectedDateSpanStrings = [
+//            "",
+//            "",
+//            "",
+//        ]
+                
         viewModel.$startDate
-            .collectNext(2)
+            .collectNext(4)
             .sink { actualStartDates in
                 XCTAssertEqual(actualStartDates, expectedStartDates)
+                actualStartDates.forEach { date in
+                    print(">>> startDate", date.string(style: .short))
+                }
             }
             .store(in: &subscriptions)
                 
         viewModel.$endDate
-            .collectNext(2)
+            .collectNext(3)
             .sink { actualEndDates in
                 XCTAssertEqual(actualEndDates, expectedEndDates)
             }
             .store(in: &subscriptions)
+        
+        // FIXME: this works, but not able to pick it up here for some reason
+//        viewModel.$dateSpanString
+//            .collectNext(4)
+//            .sink { actualDateSpanStrings in
+//                XCTAssertEqual(actualDateSpanStrings, expectedDateSpanStrings)
+//            }
+//            .store(in: &subscriptions)
                 
-        expectedStartDates.forEach { date in
-            viewModel.startDate = date
+        expectedEndDates.forEach { date in
+            viewModel.endDate = date
         }
+        
+        viewModel.dateSpan = .oneDay
+        
     }
     
     // TODO: Write tests for endDate
