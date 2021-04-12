@@ -34,13 +34,22 @@ public enum DateSpan: Int, CaseIterable {
 }
 
 extension Date {
-    func string(style: DateFormatter.Style) -> String {
+    
+    /// Generate a `String` representation of a `Date` object
+    /// - Parameters:
+    ///   - style: A `DateFormatter.Style` for the date
+    ///   - timeStyle: A `DateFormatter.Style` for time (default is `nil`)
+    /// - Returns: A `String` representation of a Date
+    func string(style: DateFormatter.Style,
+                timeStyle: DateFormatter.Style? = nil) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = style
+        if let timeStyle = timeStyle {
+            dateFormatter.timeStyle = timeStyle
+        }
         
         return dateFormatter.string(from: self)
     }
-    
     
     /// Create custom date
     /// - Parameters:
@@ -92,11 +101,7 @@ extension Date {
         let date = Calendar.current.date(byAdding: .day,
                                          value: interval,
                                          to: referenceDate)
-        
-//        guard let unwrappedDate = date else {
-//            return nil
-//        }
-    
+            
         return Calendar.current.startOfDay(for: date!)
     }
     
