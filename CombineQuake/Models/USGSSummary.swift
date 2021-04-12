@@ -27,7 +27,7 @@ struct USGSSummary: Codable {
 }
 
 struct Feature: Codable, Identifiable {
-    let type: String
+    let type: String?
     let properties: EarthQuakeData
     let geometry: Geometry
     let id: String
@@ -39,41 +39,41 @@ struct Geometry: Codable {
 }
 
 struct EarthQuakeData: Codable {
-    let mag: Double
-    let place: String
-    let time: Int
-    let updated: Int
+    let mag: Double?
+    let place: String?
+    let time: Int?
+    let updated: Int?
     let tz: Int?
-    let url: String
-    let detail: String
+    let url: String?
+    let detail: String?
     let felt: Int?
     let cdi: Double?
     let mmi: Double?
     let alert: String?
-    let status: String
-    let tsunami: Int
-    let sig: Int
-    let net: String
-    let code: String
-    let ids: String
-    let sources: String
-    let types: String
+    let status: String?
+    let tsunami: Int?
+    let sig: Int?
+    let net: String?
+    let code: String?
+    let ids: String?
+    let sources: String?
+    let types: String?
     let nst: Int?
     let dmin: Double?
     let rms: Double
     let gap: Double?
-    let magType: String
-    let type: String
-    let title: String
+    let magType: String?
+    let type: String?
+    let title: String?
 }
 
 struct Metadata: Codable {
-    let generated: Int
-    let url: String
-    let title: String
-    let status: Int
-    let api: String
-    let count: Int
+    let generated: Int?
+    let url: String?
+    let title: String?
+    let status: Int?
+    let api: String?
+    let count: Int?
 }
 
 extension Feature {
