@@ -41,7 +41,7 @@ struct Geometry: Codable {
 struct EarthQuakeData: Codable {
     let mag: Double?
     let place: String?
-    let time: Int?
+    let time: Int
     let updated: Int?
     let tz: Int?
     let url: String?
@@ -89,5 +89,17 @@ extension Feature {
                                         span: span)
         
         return region
+    }
+    
+    var quakeDate: Date {
+        Date(timeIntervalSince1970: Double(properties.time / 1_000))
+    }
+    
+    var lastUpdateDate: Date? {
+        guard let updated = properties.updated else {
+            return nil
+        }
+        
+        return Date(timeIntervalSince1970: Double(updated / 1_000))
     }
 }
